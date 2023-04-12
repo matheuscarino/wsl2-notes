@@ -313,6 +313,49 @@ $ set-prompt "Novo Título"
             },
 ```
 
+## Install Docker Desktop for Windows
+https://docs.docker.com/desktop/install/windows-install/
+```
+$ docker info
+```
+
+## Run a simple webserver in a container
+```
+$ docker run -d --name docker-nginx -p 8080:80 nginx
+```
+
+-d          tells Docker to run this container detached from our terminal (to run it in the background);
+--name      specific the name for the container rather than generating a random one;
+-p          map ports on the host to ports inside the running container;
+nginx       the name of the container image to run (if no version is specified, the latest will be used);
+
+Access your browser http://localhost:8080
+
+## Listing Containers with status RUNNING
+```
+$ docker container ls
+```
+
+## Listing ALL Containers (running or not)
+```
+$ docker container ls -a
+```
+
+## Listing Container images
+```
+$ docker image ls
+```
+
+## Stop Container
+```
+$ docker stop docker-nginx
+```
+
+## Remove Container
+```
+$ docker rm docker-nginx
+```
+
 ## 
 ```
 
@@ -328,9 +371,30 @@ $ set-prompt "Novo Título"
 
 ```
 
+## 
+```
+
+```
+
+## 
+```
+
+```
+
+## 
+```
+
+```
+
+## 
+```
+
+```
 
 
-##### READ MORE LATER #####
+
+##### EXTRA DOCUMENTATION #####
+
 Universal naming convention (UNC) paths
 https://learn.microsoft.com/en-us/dotnet/standard/io/file-path-formats
 
@@ -346,6 +410,6 @@ https://docs.github.com/pt/authentication/connecting-to-github-with-ssh
 Testing your SSH connection
 https://docs.github.com/pt/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection
 
-
-
+Install Docker Desktop on Windows
+https://docs.docker.com/desktop/install/windows-install/
 
