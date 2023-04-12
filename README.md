@@ -368,29 +368,83 @@ $ echo 'source <(kubectl completion bash)' >>~/.bashrc
 PS C:\> wsl --unregister <distro-name>
 ```
 
+## Visual Studio Code Marketplace
+https://marketplace.visualstudio.com/vscode
+
+## Visual Studio Code flavors of the remote extensions:
+
+• Remote-WSL
+• Remote-SSH
+• Remote-Containers
+
+https://code.visualstudio.com/docs/remote/remote-overview
+
+## Visual Studio Code Shortcuts
+
+### Open Palette
+CTRL + SHIFT + P
+
+### Open Explorer bar
+CTRL + SHIFT + E
+
+## Debugger
+F5
+
+### Open Run and Debug view
+CTRL + SHIFT + D
+
+## Add a Breakpoint
+F9
+
+## Setting up on Git to use VSCode as code editor
+On WSL distro (bash)
+```bash
+$ git config --global core.editor "code --wait"
+```
+On Windows hostPowershell
+```powershell
+PS C:\>git config --global core.editor "code --wait"
+```
+
 ## 
+```bash
+$ git log --graph --oneline --decorate --all
+$ git config --global --replace-all alias.logtree 'log --graph --oneline --decorate --all'
 ```
 
+## Open GitK from WSL
+```bash
+$ gitk.exe
 ```
 
-## 
+## Install JSON tool
+```bash
+$ sudo apt-get install jq
+$ echo '[1,2,"testing"]' | jq
 ```
 
+## Working with JSON on Powershell
+```powershell
+PS C:\> Get-Content ./<filename>.json | ConvertFrom-Json
+PS C:\> Get-Content ./<filename>.json | ConvertFrom-Json | Select-Object -ExpandProperty title
 ```
 
-## 
+## Put JSON content in a variable and call it
+```powershell
+PS C:\> $data = Get-Content ./wsl-book.json | ConvertFrom-Json
+PS C:\> $data.title
+PS C:\> $data.parts | Select-Object -ExpandProperty name
+PS C:\> $data.parts | select -ExpandProperty name | ConvertTo-Json
+PS C:\> $data.parts | ForEach-Object { @{ "Name" = $_.name } } | ConvertTo-Json
+PS C:\> $data.parts | ForEach-Object { @{ "Name" = $_.name; "ChapterCount"=$_.chapters.Count } } | ConvertTo-Json
+PS C:\> $data.parts | ForEach-Object { @{ "Name" = $_.name; "Chapters"=$_.chapters | Select-Object -ExpandProperty title } } | ConvertTo-Json
 ```
 
-```
-
-## 
-```
-
-```
-
-## 
-```
-
+## Invoke-WebRequest (curl alternative for Powershell)
+```powershell
+PS C:\> $SAMPLE_URL="https://raw.githubusercontent.com/PacktPublishing/Windows-Subsystem-for-Linux-2-WSL-2-Tips-Tricks-and-Techniques/main/chapter-11/02-working-with-json/wsl-book.json"
+PS C:\> Invoke-WebRequest $SAMPLE_URL
+PS C:\> Invoke-RestMethod $SAMPLE_URL
 ```
 
 
@@ -415,3 +469,5 @@ https://docs.github.com/pt/authentication/connecting-to-github-with-ssh/testing-
 Install Docker Desktop on Windows
 https://docs.docker.com/desktop/install/windows-install/
 
+HTTP Status Code
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
